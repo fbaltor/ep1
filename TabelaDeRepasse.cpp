@@ -41,4 +41,7 @@ Roteador *TabelaDeRepasse::getProximoSalto(int endereco, int &atraso) {
       atraso = atrasos[i];
       return roteadoresAdjacentes[i];
     }
+
+  atraso = atrasoPadrao;
+  return roteadorPadrao;
 }
