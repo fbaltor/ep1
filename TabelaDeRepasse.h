@@ -1,4 +1,3 @@
-#include "Fila.h"
 #include "Roteador.h"
 #include <iostream>
 #include <string>
@@ -37,6 +36,10 @@ public:
 
 private:
   int tamanho; // número máximo de endereços de destino.
-  int endereco;
-  int atraso;
+  int quantidade;
+  int *enderecos;
+  int *atrasos;
+  Roteador **roteadoresAdjacentes;
+  Roteador *roteadorPadrao;
+  int atrasoPadrao;
 };

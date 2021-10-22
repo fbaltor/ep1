@@ -1,4 +1,8 @@
+#include "Evento.h"
+
 #define TAMANHO 10
+
+using namespace std;
 
 class Roteador {
 public:

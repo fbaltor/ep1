@@ -1,8 +1,6 @@
 #include "Datagrama.h"
 #include "Roteador.h"
-#include "TabelaDeRepasse.h"
 #include <iostream>
-#include <string>
 
 using namespace std;
 
