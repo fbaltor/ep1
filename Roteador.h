@@ -1,8 +1,11 @@
-#include "Evento.h"
-
+#ifndef ROTEADOR_H
+#define ROTEADOR_H
 #define TAMANHO 10
 
 using namespace std;
+
+#include "Evento.h"
+class Evento;
 
 class Roteador {
 public:
@@ -15,3 +18,4 @@ public:
   Evento *processar(int instante);
   void imprimir();
 };
+#endif

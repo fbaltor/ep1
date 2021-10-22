@@ -1,3 +1,6 @@
+#ifndef FILA_H
+#define FILA_H
+
 #include "Datagrama.h"
 #include <string>
 
@@ -21,3 +24,4 @@ private:
   int inicio;
   int quantidade;
 };
+#endif

@@ -1,3 +1,6 @@
+#ifndef TABELA_DE_REPASSE_H
+#define TABELA_DE_REPASSE_H
+
 #include "Roteador.h"
 #include <iostream>
 #include <string>
@@ -43,3 +46,4 @@ private:
   Roteador *roteadorPadrao;
   int atrasoPadrao;
 };
+#endif

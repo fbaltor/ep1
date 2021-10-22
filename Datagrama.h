@@ -1,3 +1,6 @@
+#ifndef DATAGRAMA_H
+#define DATAGRAMA_H
+
 #include <string>
 
 using namespace std;
@@ -17,3 +20,4 @@ private:
   int destino;
   string dado;
 };
+#endif

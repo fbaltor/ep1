@@ -1,8 +1,12 @@
-#include "Datagrama.h"
-#include "Roteador.h"
-#include <iostream>
+#ifndef EVENTO_H
+#define EVENTO_H
 
 using namespace std;
+
+#include "Datagrama.h"
+#include "Roteador.h"
+class Roteador;
+#include <iostream>
 
 class Evento {
 public:
@@ -19,3 +23,4 @@ private:
   int instante; // quando ocorre o evento de passagem do datagrama para o
                 // roteador.
 };
+#endif
