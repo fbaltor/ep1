@@ -22,5 +22,8 @@ public:
 private:
   int instante; // quando ocorre o evento de passagem do datagrama para o
                 // roteador.
+                //
+  Roteador *destino;
+  Datagrama *d;
 };
 #endif
