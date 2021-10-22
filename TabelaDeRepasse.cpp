@@ -1,7 +1,7 @@
 #include "TabelaDeRepasse.h"
 
 TabelaDeRepasse::TabelaDeRepasse(int tamanho) : tamanho(tamanho) {
-  roteadores = new Roteador *[tamanho];
+  roteadoresAdjacentes = new Roteador *[tamanho];
   enderecos = new int[tamanho];
   atrasos = new int[tamanho];
 
@@ -10,7 +10,7 @@ TabelaDeRepasse::TabelaDeRepasse(int tamanho) : tamanho(tamanho) {
 }
 
 TabelaDeRepasse::~TabelaDeRepasse() {
-  delete[] roteadores;
+  delete[] roteadoresAdjacentes;
   delete[] atrasos;
   delete[] enderecos;
 }
