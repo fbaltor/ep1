@@ -5,17 +5,45 @@ using namespace std;
 Fila::Fila(int tamanho) : tamanho(tamanho) {
   fila = new Datagrama *[tamanho];
   inicio = 0;
-  final = 0;
+  quantidade = 0;
 }
 
-Fila::~Fila() {}
+Fila::~Fila() {
+  for (int i = 0; i < quantidade; i++) {
+    int pos = (inicio + i) % tamanho;
+    delete fila[pos];
+  }
+  delete[] fila;
+}
 
-bool Fila::enqueue(Datagrama *d) {}
+bool Fila::enqueue(Datagrama *d) {
+  if (quantidade >= tamanho)
+    return false;
 
-Datagrama *Fila::dequeue() {}
+  quantidade++;
+  int final = (inicio + quantidade) % tamanho;
+  fila[final] = d;
+  return true;
+}
 
-bool Fila::isEmpty() {}
+Datagrama *Fila::dequeue() {
+  if (isEmpty())
+    return NULL;
 
-int Fila::getSize() {}
+  Datagrama *inicial =
+      new Datagrama(fila[inicio]->getOrigem(), fila[inicio]->getDestino(),
+                    fila[inicio]->getDado());
 
-void imprimir() {}
+  delete fila[inicio];
+
+  inicio = (inicio + 1) % tamanho;
+  quantidade--;
+
+  return inicial;
+}
+
+bool Fila::isEmpty() { return quantidade; }
+
+int Fila::getSize() { return quantidade; }
+
+void Fila::imprimir() {}

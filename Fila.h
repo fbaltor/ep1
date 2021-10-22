@@ -19,5 +19,5 @@ private:
   int tamanho;
   Datagrama **fila;
   int inicio;
-  int final;
+  int quantidade;
 };
