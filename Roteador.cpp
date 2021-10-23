@@ -1,4 +1,5 @@
 #include "Roteador.h"
+#include <iostream>
 
 Roteador::Roteador(int endereco) : endereco(endereco) {
   tabela = new TabelaDeRepasse(TAMANHO);
@@ -29,9 +30,12 @@ Evento *Roteador::processar(int instante) {
   if (fila->isEmpty())
     return NULL;
 
+  cout << "Roteador " << endereco << endl;
+
   Datagrama *processado = fila->dequeue();
 
   if (processado->getDestino() == endereco) {
+    cout << "\tRecebido: " << processado->getDado() << endl;
     delete processado;
     return NULL;
   }
@@ -40,9 +44,20 @@ Evento *Roteador::processar(int instante) {
   Roteador *proximo = tabela->getProximoSalto(processado->getDestino(), atraso);
 
   if (proximo == NULL) {
+    cout << "\tSem proximo: "
+         << "Origem: " << processado->getOrigem() << ", "
+         << "Destino: " << processado->getDestino() << ", "
+         << processado->getDado() << endl;
     delete processado;
     return NULL;
   }
 
-  return new Evento(instante + atraso, proximo, processado);
+  int instanteFinal = instante + atraso;
+  cout << "\tRepassando para " << proximo << "(instante " << instanteFinal
+       << "): "
+       << "Origem: " << processado->getOrigem() << ", "
+       << "Destino: " << processado->getDestino() << ", "
+       << processado->getDado() << endl;
+
+  return new Evento(instanteFinal, proximo, processado);
 }
