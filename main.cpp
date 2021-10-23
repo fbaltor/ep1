@@ -10,7 +10,7 @@
 
 using namespace std;
 
-void rede_enunciado() {
+int main() {
   Roteador *r1 = new Roteador(1);
   Roteador *r2 = new Roteador(2);
   Roteador *r3 = new Roteador(3);
@@ -18,14 +18,14 @@ void rede_enunciado() {
   Roteador *r5 = new Roteador(5);
   Roteador *r6 = new Roteador(6);
 
-  Rede *rede_enunciado = new Rede(6);
+  Rede *rede = new Rede(6);
 
-  rede_enunciado->adicionar(r1);
-  rede_enunciado->adicionar(r2);
-  rede_enunciado->adicionar(r3);
-  rede_enunciado->adicionar(r4);
-  rede_enunciado->adicionar(r5);
-  rede_enunciado->adicionar(r6);
+  rede->adicionar(r1);
+  rede->adicionar(r2);
+  rede->adicionar(r3);
+  rede->adicionar(r4);
+  rede->adicionar(r5);
+  rede->adicionar(r6);
 
   r1->mapear(2, r2, 2);
   r2->mapear(1, r1, 2);
@@ -42,17 +42,59 @@ void rede_enunciado() {
   r5->setPadrao(r3, 2);
   r6->setPadrao(r4, 1);
 
-  // criar agendador
+  Agendador *agendador = new Agendador(1, rede, 10);
 
-  int numero;
-  cout << "Simulador de Rede" << endl;
-  cout << "1) Enviar um datagrama" << endl;
-  cout << "2) Passar tempo" << endl;
-  cout << "0) Sair" << endl;
-  cout << "Escolha uma opção:" << endl;
-  cin >> numero;
-  cout << endl;
+  int opcao;
 
-  if (numero == 1) {
-  }
+  int roteadorOrigem;
+  int roteadorDestino;
+  int instante;
+  string mensagem;
+  Datagrama *datagrama;
+
+  int quantidadeDeTempo;
+  do {
+    cout << "Simulador de Rede" << endl;
+    cout << "1) Enviar um datagrama" << endl;
+    cout << "2) Passar tempo" << endl;
+    cout << "0) Sair" << endl;
+    cout << "Escolha uma opção:" << endl;
+    cin >> opcao;
+    cout << endl;
+
+    if (opcao == 1) {
+      cout << "Endereco do roteador de origem: " << endl;
+      cin >> roteadorOrigem;
+      cout << "Instante: " << endl;
+      cin >> instante;
+      cout << "Endereco de destino: " << endl;
+      cin >> roteadorDestino;
+      cout << "Mensagem: " << endl;
+      cin >> mensagem;
+
+      if (roteadorOrigem < 1 || roteadorOrigem > 6)
+        cout << "Erro: origem desconhecida" << endl;
+
+      Datagrama *datagrama =
+          new Datagrama(roteadorOrigem, roteadorDestino, mensagem);
+
+      if (!agendador->agendar(instante, rede->getRoteador(roteadorOrigem),
+                              datagrama))
+        cout << "Erro: Sem espaco para agendar evento" << endl;
+    }
+
+    if (opcao == 2) {
+      cout << "Quantidade de tempo: " << endl;
+      cin >> quantidadeDeTempo;
+
+      for (int tempo = 1; tempo <= quantidadeDeTempo; tempo++) {
+        cout << "Instante " << agendador->getInstante() << endl;
+        cout << "---" << endl;
+        agendador->processar();
+      }
+    }
+
+  } while (opcao);
+
+  return 0;
 }
