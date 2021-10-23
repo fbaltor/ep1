@@ -2,6 +2,7 @@
 
 Rede::Rede(int tamanho) : tamanho(tamanho) {
   roteadores = new Roteador *[tamanho];
+  quantidade = 0;
 }
 
 Rede::~Rede() {

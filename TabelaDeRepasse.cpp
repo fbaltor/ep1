@@ -5,6 +5,8 @@ TabelaDeRepasse::TabelaDeRepasse(int tamanho) : tamanho(tamanho) {
   enderecos = new int[tamanho];
   atrasos = new int[tamanho];
 
+  quantidade = 0;
+
   roteadorPadrao = NULL;
   atrasoPadrao = 0;
 }
