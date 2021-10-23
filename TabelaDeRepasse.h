@@ -1,11 +1,12 @@
 #ifndef TABELA_DE_REPASSE_H
 #define TABELA_DE_REPASSE_H
 
+using namespace std;
+
 #include "Roteador.h"
+class Roteador;
 #include <iostream>
 #include <string>
-
-using namespace std;
 
 class TabelaDeRepasse {
 public:
