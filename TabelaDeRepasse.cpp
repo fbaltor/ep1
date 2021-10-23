@@ -47,3 +47,5 @@ Roteador *TabelaDeRepasse::getProximoSalto(int endereco, int &atraso) {
   atraso = atrasoPadrao;
   return roteadorPadrao;
 }
+
+void TabelaDeRepasse::imprimir() {}

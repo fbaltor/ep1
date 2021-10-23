@@ -61,3 +61,5 @@ Evento *Roteador::processar(int instante) {
 
   return new Evento(instanteFinal, proximo, processado);
 }
+
+void Roteador::imprimir() {}

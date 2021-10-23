@@ -35,3 +35,5 @@ Roteador *Rede::getRoteador(int endereco) {
 Roteador **Rede::getRoteadores() { return roteadores; }
 
 int Rede::getQuantidade() { return quantidade; }
+
+void Rede::imprimir() {}

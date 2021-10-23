@@ -10,3 +10,5 @@ int Evento::getInstante() { return instante; }
 Roteador *Evento::getDestino() { return destino; }
 
 Datagrama *Evento::getDatagrama() { return d; }
+
+void Evento::imprimir() {}
