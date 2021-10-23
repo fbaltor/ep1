@@ -32,8 +32,8 @@ void Agendador::processar() {
       e->getDestino()->receber(d);
 
       delete d;
+      delete e;
     }
-    delete e;
     delete[] eventos;
   }
   eventos = eventosNaoProcessados;
