@@ -23,19 +23,19 @@ void Agendador::processar() {
 
   Evento **eventosNaoProcessados = new Evento *[tamanho];
   int novaQuantidade = 0;
+
   for (int i = 0; i < quantidade; i++) {
     Evento *e = eventos[i];
     if (e->getInstante() != instanteAtual) {
-      eventosNaoProcessados[novaQuantidade] = e;
+      eventosNaoProcessados[novaQuantidade++] = e;
     } else {
       Datagrama *d = e->getDatagrama();
       e->getDestino()->receber(d);
 
-      delete d;
       delete e;
     }
-    delete[] eventos;
   }
+  delete[] eventos;
   eventos = eventosNaoProcessados;
   quantidade = novaQuantidade;
 
